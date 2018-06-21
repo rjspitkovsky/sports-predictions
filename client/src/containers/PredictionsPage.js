@@ -1,13 +1,16 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PredictionsList from '../components/PredictionsList'
 // import other components here
 
-const PredictionsPage = ({match, predictions}) =>
+const PredictionsPage = ({match}) =>
   <div>
-  /*<br />other child components here */
+  {/*<br />other child components here like PredictionsList */}
+  <PredictionsList  />
+  {/*<PredictionsNew /> */}
   <Route path={`${match.url}/:movieId`} render={() => <div><br />This is the show component for a prediction</div>} />
-  <Route exact path={match.url} render={() => <div><br />Please view all predictions here</div>} />
+  {/* <Route exact path={match.url} component={PredictionsList} /> */}
   </div>
 
 
