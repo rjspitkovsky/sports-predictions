@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchPredictions} from './actions/predictionActions';
 import PredictionsPage from './containers/PredictionsPage'
+import CorrectPredictionsList from './components/CorrectPredictionsList'
 
 class App extends Component {
 
@@ -23,7 +24,7 @@ class App extends Component {
       <NavBar />
       <Route exact path="/" render={() => <div><br />Home</div>} />
       <Route path='/predictions' component={PredictionsPage} />
-      <Route path='/correct' render={() => <div><br />Correct</div>} />
+      <Route path='/correct' component={CorrectPredictionsList} />
       <Route path='/wrong' render={() => <div><br />Wrong</div>} />
       </div>
       </Router>

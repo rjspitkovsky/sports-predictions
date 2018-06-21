@@ -9,7 +9,8 @@ function predictionsReducer(state = {predictions: []}, action) {
     return Object.assign({}, predictions)
     // return state = [state.predictions, action.payload]
     case 'FETCH_CORRECT_PREDICTIONS':
-    return {loading: false, predictions: action.payload}
+    const correctPredictions = {predictions: [...state.predictions, action.payload]}
+    return Object.assign({}, correctPredictions)
     case 'FETCH_WRONG_PREDICTIONS':
     return {loading: false, predictions: action.payload}
     default:
