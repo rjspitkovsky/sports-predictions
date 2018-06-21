@@ -33,7 +33,10 @@ class App extends Component {
         <button onClick={(event) => this.handleClick(event)}>Click to see predictions</button>
 
         <div>
-        {this.props.predictions}
+        {this.props.predictions.map((prediction, index) => <p>{prediction.content}<br />
+          <h2>{prediction.sport}</h2><br />
+          <h3>{prediction.status}</h3><br />
+          </p>)}
         </div>
 
       </div>
@@ -43,7 +46,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    predictions: state.predictions[0]
+    predictions: state.predictions.predictions
   }
 }
 
