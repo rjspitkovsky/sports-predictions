@@ -27,10 +27,15 @@ class PredictionsController < ApplicationController
     else
       render json: @prediction.errors, status: :unprocessable_entity
     end
-  end 
+  end
 
   def destroy
     @prediction.destroy
+  end
+
+  def correct
+    @predictions = Prediction.where(status: 'correct')
+    render json: @predictions
   end
 
   private

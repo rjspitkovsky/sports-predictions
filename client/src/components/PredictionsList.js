@@ -6,10 +6,11 @@ import Prediction from '../components/Prediction'
 
 
 class PredictionsList extends React.Component {
-
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.props.fetchPredictions()
   }
+
 
   render() {
     return (
