@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {fetchPredictions} from './actions/predictionActions';
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      predictions: []
+    }
+  }
+  handleClick(event) {
+    event.preventDefault();
+    this.props.fetchPredictions()
+  }
+
+
+
   render() {
     return (
       <div className="App">
@@ -13,9 +30,27 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <button onClick={(event) => this.handleClick(event)}>Click to see predictions</button>
+
+        <div>
+        {this.props.predictions}
+        </div>
+
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    predictions: state.predictions[0]
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    fetchPredictions: fetchPredictions
+  }, dispatch)}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
