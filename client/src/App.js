@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchPredictions} from './actions/predictionActions';
+import PredictionsPage from './containers/PredictionsPage'
 
 class App extends Component {
 
@@ -20,21 +21,21 @@ class App extends Component {
       <Router>
       <div className="App">
       <NavBar />
-      <Route exact path="/" render={() => <div>Home</div>} />
-      <Route path='/predictions' render={() => <div>Predictions</div>} />
-      <Route path='/correct' render={() => <div>Correct</div>} />
-      <Route path='/wrong' render={() => <div>Wrong</div>} />
+      <Route exact path="/" render={() => <div><br />Home</div>} />
+      <Route path='/predictions' component={PredictionsPage} />
+      <Route path='/correct' render={() => <div><br />Correct</div>} />
+      <Route path='/wrong' render={() => <div><br />Wrong</div>} />
       </div>
       </Router>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    predictions: state.predictions.predictions
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     predictions: state.predictions.predictions
+//   }
+// }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -42,4 +43,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)}
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapDispatchToProps)(App);
