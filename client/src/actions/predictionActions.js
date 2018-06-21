@@ -17,3 +17,12 @@ export function fetchCorrectPredictions() {
     correctPredictions.forEach(prediction => (dispatch({type: 'FETCH_CORRECT_PREDICTIONS', payload: prediction})))})
   }
 }
+
+export function fetchWrongPredictions() {
+  return(dispatch) => {
+    dispatch({type: 'LOADING_PREDICTIONS'});
+    return fetch('http://localhost:3000/api/wrong').then(resp => resp.json()).then(respJSON =>
+    {const wrongPredictions = respJSON;
+    wrongPredictions.forEach(prediction => (dispatch({type: 'FETCH_WRONG_PREDICTIONS', payload: prediction})))})
+  }
+}

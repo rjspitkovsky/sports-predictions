@@ -38,6 +38,11 @@ class PredictionsController < ApplicationController
     render json: @predictions
   end
 
+  def wrong
+    @predictions = Prediction.where(status: 'wrong')
+    render json: @predictions
+  end 
+
   private
 
   def set_prediction
