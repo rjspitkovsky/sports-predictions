@@ -8,13 +8,14 @@ import Prediction from '../components/Prediction'
 class WrongPredictionsList extends React.Component {
   constructor(props) {
     super(props);
+    document.getElementsByClassName(".prediction-div").innerHTML = "";
     this.props.fetchWrongPredictions()
   }
 
 
   render() {
     return (
-      <div>
+      <div className="prediction-div">
     {this.props.predictions.map((prediction, index) =>
       <Prediction  key={index} prediction={prediction} />
 

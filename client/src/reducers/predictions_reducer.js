@@ -1,8 +1,8 @@
 function predictionsReducer(state = {predictions: []}, action) {
   switch(action.type) {
     case 'LOADING_PREDICTIONS':
-    return Object.assign({}, state, {loading: true})
-    return state = [{}, state]
+    // return Object.assign({}, state, {loading: true})
+    return state = {predictions: []}
     case 'FETCH_PREDICTIONS':
     // return state = [...state.predictions, action.payload]
     const predictions = {predictions: [...state.predictions, action.payload]}

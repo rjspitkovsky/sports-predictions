@@ -24,9 +24,9 @@ class App extends Component {
       <div className="App">
       <NavBar />
       <Route exact path="/" render={() => <div><br />Home</div>} />
-      <Route path='/predictions' component={PredictionsPage} />
-      <Route path='/correct' component={CorrectPredictionsList} />
-      <Route path='/wrong' component={WrongPredictionsList} />
+      <Route exact path='/predictions' component={PredictionsPage} />
+      <Route exact path='/correct' component={CorrectPredictionsList} />
+      <Route exact path='/wrong' component={WrongPredictionsList} />
       </div>
       </Router>
     );
