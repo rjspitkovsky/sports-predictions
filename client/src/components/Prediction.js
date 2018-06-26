@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deletePrediction } from '../actions/predictionActions'
+import  DeleteButton  from '../components/DeleteButton'
 
 const Prediction = ({prediction, key}) => {
 
@@ -9,8 +10,7 @@ const Prediction = ({prediction, key}) => {
       <p>{prediction.content}</p><br />
       <p>{prediction.sport}</p><br />
       <p>{prediction.status}</p><br />
-      <h3> "Want to save this prediction from further embarassment?"</h3>
-      <button onClick={(event) => this.props.deletePrediction(event)}/>
+      <DeleteButton />
       </div>
  )
 }
