@@ -41,7 +41,7 @@ class PredictionsController < ApplicationController
   def wrong
     @predictions = Prediction.where(status: 'wrong')
     render json: @predictions
-  end 
+  end
 
   private
 
@@ -49,7 +49,7 @@ class PredictionsController < ApplicationController
     @prediction = Prediction.find(params[:id])
   end
 
-  def prediciton_params
-    params.require(:prediction).permit(:content, :sport, :status)
+  def prediction_params
+    params.permit(:content, :sport, :status)
   end
 end

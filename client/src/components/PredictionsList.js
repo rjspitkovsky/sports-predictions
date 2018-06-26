@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchPredictions} from '../actions/predictionActions';
-import Prediction from '../components/Prediction'
+import Prediction from '../components/Prediction';
+import { deletePrediction } from '../actions/predictionActions'
+
 
 
 class PredictionsList extends React.Component {
@@ -11,13 +13,23 @@ class PredictionsList extends React.Component {
     this.props.fetchPredictions()
   }
 
+  shouldComponentUpdate(nextProps) {
+    return (this.props.predictions !== nextProps.predictions)
+  }
+
+  handleClick(event) {
+    event.preventDefault()
+    console.log(event.target.value.id)
+    // this.props.deletePrediction(prediction)
+
+  }
+
 
   render() {
     return (
       <div>
     {this.props.predictions.map((prediction, index) =>
-      <Prediction  key={index} prediction={prediction} />
-
+      <Prediction  handleClick={this.handleClick} key={index} prediction={prediction} />
     )}
     </div>
   )
@@ -34,7 +46,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchPredictions: fetchPredictions
+    fetchPredictions: fetchPredictions,
+    deletePrediction: deletePrediction
   }, dispatch)}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PredictionsList);

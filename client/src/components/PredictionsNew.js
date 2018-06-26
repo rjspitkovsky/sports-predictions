@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import { addPrediction, fetchPredictions } from '../actions/predictionActions'
 // import addPrediction action and connect mapDispatchToProps here
 
 class PredictionsNew extends React.Component {
@@ -7,17 +8,28 @@ class PredictionsNew extends React.Component {
     super();
 
     this.state= {
-      prediction: []
+      content: '',
+      sport: '',
+      status: 'undetermined'
     }
   }
 
   handleOnSubmit = event => {
     event.preventDefault()
+    const prediction = Object.assign({}, this.state)
+    this.props.addPrediction(prediction)
+    this.props.fetchPredictions()
   }
 
-  handleOnChange = event => {
+  handleContentChange = event => {
     this.setState({
-      prediction: "See your prediction"
+      content: event.target.value
+    })
+  }
+
+  handleSportChange = event => {
+    this.setState({
+      sport: event.target.value
     })
   }
 
@@ -27,8 +39,8 @@ class PredictionsNew extends React.Component {
       <br />
       <br />
       <form onSubmit={(event) => this.handleOnSubmit(event)}>
-      <input type="text" onChange={(event) => this.handleOnChange(event)} placeholder="What's your prediction?" /><br />
-      <input type="text" placeholder="What sport?" /><br />
+      <textarea type="text" onChange={(event) => this.handleContentChange(event)} placeholder="What's your prediction?" /><br />
+      <input type="text" onChange={(event) => this.handleSportChange(event)} placeholder="What sport?" /><br />
       <input type="submit" value="Add Prediction" />
       </form>
       <h2>{this.state.prediction}</h2>
@@ -37,4 +49,4 @@ class PredictionsNew extends React.Component {
   }
 }
 
-export default PredictionsNew
+export default connect(null, {addPrediction, fetchPredictions})(PredictionsNew)
