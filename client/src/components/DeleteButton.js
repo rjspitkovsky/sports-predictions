@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deletePrediction } from '../actions/predictionActions';
+import {bindActionCreators} from 'redux';
+
 
 class DeleteButton extends React.Component {
   constructor() {
@@ -10,25 +14,22 @@ class DeleteButton extends React.Component {
   }
 
   handleClick = event => {
-    if (this.state.test === "") {
-    this.setState({
-      test: "You've clicked me!"
-    })
-  } else {
-    this.setState({
-      test: ""
-    })
-  }
+    event.preventDefault()
+    this.props.deletePrediction(this.props.predictionId)
 }
   render() {
     return (
       <div>
-      <p> "Want to save this prediction from further embarrassment? Delete button below"</p>
-      <button onClick={this.handleClick}/>
+      <button onClick={this.handleClick}>Want to save this prediction from further embarrassment? Delete</button>
       {this.state.test}
       </div>
     )
   }
 }
 
-export default DeleteButton
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    deletePrediction: deletePrediction
+  }, dispatch)}
+
+export default connect(null, mapDispatchToProps)(DeleteButton)

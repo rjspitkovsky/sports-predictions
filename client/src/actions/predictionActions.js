@@ -40,26 +40,21 @@ export function addPrediction(data) {
     },
     body: JSON.stringify(data)
   })
-    //   dispatch({type: 'LOADING_PREDICTIONS'}),
-    // return fetch('http://localhost:3000/api/predictions').then(resp => resp.json()).then(respJSON =>
-    // {const predictions = respJSON;
-    //   predictions.forEach(prediction => (dispatch({type: 'FETCH_PREDICTIONS', payload: prediction})))})
-  // getPredictionsAfterPosting()
-
 }
 }
 
 
-export function deletePrediction(event) {
-  event.preventDefault()
-  console.log("will this work?")
-}
-
-export function getPredictionsAfterPosting() {
+export function deletePrediction(id) {
+  console.log(id)
   return (dispatch) => {
-    dispatch({type: 'FETCH_PREDICTIONS'});
-    // return fetch('http://localhost:3000/api/predictions').then(resp => resp.json()).then(respJSON =>
-    // {const predictions = respJSON;
-    //   predictions.forEach(prediction => (dispatch({type: 'FETCH_PREDICTIONS', payload: prediction})))})
+    dispatch({type: 'LOADING_PREDICTIONS'});
+    return fetch('http://localhost:3000/api/predictions/' + id, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(id)
+    })
   }
 }

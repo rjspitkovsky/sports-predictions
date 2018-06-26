@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { deletePrediction } from '../actions/predictionActions'
 import  DeleteButton  from '../components/DeleteButton'
 
 const Prediction = ({prediction, key}) => {
@@ -10,9 +8,9 @@ const Prediction = ({prediction, key}) => {
       <p>{prediction.content}</p><br />
       <p>{prediction.sport}</p><br />
       <p>{prediction.status}</p><br />
-      <DeleteButton />
+      <DeleteButton predictionId={prediction.id} />
       </div>
  )
 }
 
-export default connect(null, {deletePrediction})(Prediction)
+export default Prediction
