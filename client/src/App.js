@@ -8,6 +8,7 @@ import {fetchPredictions} from './actions/predictionActions';
 import PredictionsPage from './containers/PredictionsPage'
 import CorrectPredictionsList from './components/CorrectPredictionsList'
 import WrongPredictionsList from './components/WrongPredictionsList'
+import PredictionShow from './components/PredictionShow'
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
       <Route exact path='/predictions' component={PredictionsPage} />
       <Route exact path='/correct' component={CorrectPredictionsList} />
       <Route exact path='/wrong' component={WrongPredictionsList} />
+      <Route path='/predictions/:predictionId' component={PredictionShow} />
       </div>
       </Router>
     );

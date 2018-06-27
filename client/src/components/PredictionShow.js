@@ -1,11 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Prediction from '../components/Prediction';
+import {bindActionCreators} from 'redux';
+import {fetchPredictions} from '../actions/predictionActions';
 
-const PredictionShow = props => {
+const PredictionShow = prediction => {
+
+
   return (
     <div>
-      <h3>Why cant I see this?!</h3>
+      <Prediction prediction={prediction} />
       </div>
   )
 }
 
-export default PredictionShow
+const mapStateToProps = (state, ownProps) => {
+
+  const prediction = state.predictions.predictions.find(prediction => prediction.id === ownProps.match.params.predictionId)
+
+  return prediction
+
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    fetchPredictions: fetchPredictions
+  }, dispatch)}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PredictionShow)

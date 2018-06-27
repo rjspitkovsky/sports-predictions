@@ -8,7 +8,7 @@ import PredictionShow from '../components/PredictionShow'
 
 const PredictionsPage = ({match}) =>
   <div>
-  <Route exact path={`/:predictionId`} component={PredictionShow} />
+  {/*<Route exact path={`/:predictionId`} component={PredictionShow} />*/}
   <PredictionsNew />
   <PredictionsList  />
   {/*<PredictionsNew /> */}

@@ -32,7 +32,7 @@ class PredictionsList extends React.Component {
     {this.props.predictions.map((prediction, index) =>
       <div>
       <Link to={`/predictions/${prediction.id}`}>{prediction.id}</Link>
-      <Prediction  handleClick={this.handleClick} key={index} prediction={prediction} />
+      <Prediction key={index} prediction={prediction} />
       </div>
     )}
     </div>
