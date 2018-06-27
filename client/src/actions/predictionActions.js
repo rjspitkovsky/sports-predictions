@@ -57,4 +57,5 @@ export function deletePrediction(id) {
       body: JSON.stringify(id)
     })
   }
+
 }

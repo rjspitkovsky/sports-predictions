@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { deletePrediction, fetchPredictions } from '../actions/predictionActions';
 import {bindActionCreators} from 'redux';
 import DeleteButton from '../components/DeleteButton';
+import CorrectButton from '../components/CorrectButton';
+import WrongButton from '../components/WrongButton'
 
 
 class Buttons extends React.Component {
@@ -24,7 +26,8 @@ class Buttons extends React.Component {
       <div>
       {/*<button onClick={this.handleClick}>Want to save this prediction from further embarrassment? Delete</button>*/}
       <DeleteButton handleClick={this.handleClick}/>
-      {this.state.test}
+      <CorrectButton />
+      <WrongButton />
       </div>
     )
   }
