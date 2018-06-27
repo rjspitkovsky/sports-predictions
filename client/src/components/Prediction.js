@@ -1,5 +1,5 @@
 import React from 'react';
-import  DeleteButton  from '../components/DeleteButton'
+import  Buttons  from '../components/Buttons'
 
 const Prediction = ({prediction, key}) => {
 
@@ -8,7 +8,7 @@ const Prediction = ({prediction, key}) => {
       <p>{prediction.content}</p><br />
       <p>{prediction.sport}</p><br />
       <p>{prediction.status}</p><br />
-      <DeleteButton predictionId={prediction.id} />
+      <Buttons prediction={prediction} />
       </div>
  )
 }
