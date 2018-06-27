@@ -86,3 +86,9 @@ export function updateWrongPrediction(prediction) {
     }).then(resp => console.log(resp))
   }
 }
+
+export function addPredictionToState(prediction) {
+  return (dispatch) => {
+    dispatch({type: 'ADD_PREDICTION', payload: prediction})
+}
+}

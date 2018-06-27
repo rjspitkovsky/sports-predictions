@@ -16,11 +16,12 @@ const PredictionShow = prediction => {
 
 const mapStateToProps = (state, ownProps) => {
 
-  const prediction = state.predictions.predictions.find(prediction => prediction.id === ownProps.match.params.predictionId)
-
+  const prediction = state.predictions.predictions.find(prediction => prediction.id === parseInt(ownProps.match.params.predictionId))
+  // if (prediction === undefined) {
+  // const predictionDemo = {id: 1, content: "The Brooklyn Nets will make next year's playoffs", sport: "NBA"}
   return prediction
-
 }
+
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({

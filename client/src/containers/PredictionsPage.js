@@ -1,9 +1,8 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PredictionsList from '../components/PredictionsList'
 import PredictionsNew from '../components/PredictionsNew'
-import PredictionShow from '../components/PredictionShow'
+
 // import other components here
 
 const PredictionsPage = ({match}) =>
