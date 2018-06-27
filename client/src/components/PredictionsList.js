@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {fetchPredictions} from '../actions/predictionActions';
 import Prediction from '../components/Prediction';
 import { deletePrediction } from '../actions/predictionActions'
+import { Link } from 'react-router-dom';
 
 
 
@@ -29,7 +30,10 @@ class PredictionsList extends React.Component {
     return (
       <div>
     {this.props.predictions.map((prediction, index) =>
+      <div>
+      <Link to={`/predictions/${prediction.id}`}>{prediction.id}</Link>
       <Prediction  handleClick={this.handleClick} key={index} prediction={prediction} />
+      </div>
     )}
     </div>
   )
