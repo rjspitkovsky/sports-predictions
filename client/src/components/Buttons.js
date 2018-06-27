@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deletePrediction, fetchPredictions } from '../actions/predictionActions';
+import { deletePrediction, fetchPredictions, updateCorrectPrediction, updateWrongPrediction } from '../actions/predictionActions';
 import {bindActionCreators} from 'redux';
 import DeleteButton from '../components/DeleteButton';
 import CorrectButton from '../components/CorrectButton';
@@ -12,22 +12,39 @@ class Buttons extends React.Component {
     super();
 
     this.state = {
-      test: ''
+      status: ''
     }
   }
 
-  handleClick = event => {
+  handleDelete = event => {
     event.preventDefault()
     this.props.deletePrediction(this.props.prediction.id)
     this.props.fetchPredictions()
 }
+
+  handleCorrect = event => {
+    event.preventDefault()
+    this.props.prediction.status = "correct"
+    this.props.updateCorrectPrediction(this.props.prediction)
+    this.props.fetchPredictions()
+  }
+
+  handleWrong = event => {
+    event.preventDefault()
+    this.props.prediction.status = "wrong"
+    this.props.updateWrongPrediction(this.props.prediction)
+    this.props.fetchPredictions()
+  }
+
+
+
   render() {
     return (
       <div>
       {/*<button onClick={this.handleClick}>Want to save this prediction from further embarrassment? Delete</button>*/}
-      <DeleteButton handleClick={this.handleClick}/>
-      <CorrectButton />
-      <WrongButton />
+      <DeleteButton handleClick={this.handleDelete}/>
+      <CorrectButton handleCorrect={this.handleCorrect}/>
+      <WrongButton handleWrong={this.handleWrong}/>
       </div>
     )
   }
@@ -36,7 +53,9 @@ class Buttons extends React.Component {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     deletePrediction: deletePrediction,
-    fetchPredictions: fetchPredictions
+    fetchPredictions: fetchPredictions,
+    updateCorrectPrediction: updateCorrectPrediction,
+    updateWrongPrediction: updateWrongPrediction
   }, dispatch)}
 
 export default connect(null, mapDispatchToProps)(Buttons)

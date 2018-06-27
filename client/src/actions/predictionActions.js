@@ -45,7 +45,7 @@ export function addPrediction(data) {
 
 
 export function deletePrediction(id) {
-  console.log(id)
+  // console.log(id)
   return (dispatch) => {
     dispatch({type: 'LOADING_PREDICTIONS'});
     return fetch('http://localhost:3000/api/predictions/' + id, {
@@ -57,5 +57,32 @@ export function deletePrediction(id) {
       body: JSON.stringify(id)
     })
   }
+}
 
+export function updateCorrectPrediction(prediction) {
+  return (dispatch) => {
+    dispatch({type: 'LOADING_PREDICTIONS'});
+    return fetch('http://localhost:3000/api/predictions/' + prediction.id, {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(prediction)
+    }).then(resp => console.log(resp))
+  }
+}
+
+export function updateWrongPrediction(prediction) {
+  return (dispatch) => {
+    dispatch({type: 'LOADING_PREDICTIONS'});
+    return fetch('http://localhost:3000/api/predictions/' + prediction.id, {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(prediction)
+    }).then(resp => console.log(resp))
+  }
 }
