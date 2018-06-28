@@ -33,7 +33,7 @@ class PredictionsList extends React.Component {
     {this.props.predictions.map((prediction, index) =>
       <div>
       {/*this.props.addPredictionToState(prediction)*/}
-      <Link to={`/predictions/${prediction.id}`}>{prediction.id}</Link>
+      {/*<Link to={`/predictions/${prediction.id}`}>{prediction.id}</Link>*/}
       <Prediction key={index} prediction={prediction} />
       </div>
     )}

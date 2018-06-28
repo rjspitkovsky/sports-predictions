@@ -37,14 +37,20 @@ class Buttons extends React.Component {
   }
 
 
-
   render() {
     return (
       <div>
       {/*<button onClick={this.handleClick}>Want to save this prediction from further embarrassment? Delete</button>*/}
-      <DeleteButton handleClick={this.handleDelete}/>
+      {this.props.prediction.status === "wrong" ?
+        <DeleteButton handleClick={this.handleDelete}/>
+        : null}
+
+        {this.props.prediction.status === "undetermined" ?
+        <div>
       <CorrectButton handleCorrect={this.handleCorrect}/>
       <WrongButton handleWrong={this.handleWrong}/>
+      </div>
+      : null}
       </div>
     )
   }
