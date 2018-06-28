@@ -10,8 +10,10 @@ import { Link } from 'react-router-dom';
 class PredictionsList extends React.Component {
   constructor(props) {
     super(props);
-    this.props.fetchPredictions()
+    this.delayFetchPredictions(props)
   }
+
+  delayFetchPredictions = (props) => setTimeout(function() {props.fetchPredictions()}, 100)
 
   // componentDidMount() {
   //   this.props.predictions.forEach(prediction => this.props.addPredictionToState(prediction))

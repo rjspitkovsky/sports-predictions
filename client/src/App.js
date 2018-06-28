@@ -11,6 +11,7 @@ import WrongPredictionsList from './components/WrongPredictionsList'
 import PredictionShow from './components/PredictionShow'
 import Home from './components/Home'
 import Header from './components/Header'
+import PredictionsNew from './components/PredictionsNew'
 
 class App extends Component {
 
@@ -28,6 +29,7 @@ class App extends Component {
       <Header />
       <NavBar />
       <Route exact path="/" component={Home} />
+      <Route path='/new' component={PredictionsNew} />
       <Route exact path='/predictions' component={PredictionsPage} />
       <Route exact path='/correct' component={CorrectPredictionsList} />
       <Route exact path='/wrong' component={WrongPredictionsList} />

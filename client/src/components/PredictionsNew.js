@@ -14,11 +14,14 @@ class PredictionsNew extends React.Component {
     }
   }
 
+
   handleOnSubmit = event => {
     event.preventDefault()
+    event.target.reset()
     const prediction = Object.assign({}, this.state)
     this.props.addPrediction(prediction)
     this.props.fetchPredictions()
+
   }
 
   handleContentChange = event => {
