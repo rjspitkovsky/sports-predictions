@@ -9,6 +9,7 @@ import PredictionsPage from './containers/PredictionsPage'
 import CorrectPredictionsList from './components/CorrectPredictionsList'
 import WrongPredictionsList from './components/WrongPredictionsList'
 import PredictionShow from './components/PredictionShow'
+import Home from './components/Home'
 
 class App extends Component {
 
@@ -24,7 +25,7 @@ class App extends Component {
       <Router>
       <div className="App">
       <NavBar />
-      <Route exact path="/" render={() => <div><br />Home</div>} />
+      <Route exact path="/" component={Home} />
       <Route exact path='/predictions' component={PredictionsPage} />
       <Route exact path='/correct' component={CorrectPredictionsList} />
       <Route exact path='/wrong' component={WrongPredictionsList} />

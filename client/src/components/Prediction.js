@@ -3,7 +3,7 @@ import  Buttons  from '../components/Buttons'
 
 const Prediction = ({prediction, key}) => {
 
-if (prediction.id !== "undefined") {
+
   return (
 
       <div id={prediction.id}>
@@ -15,6 +15,6 @@ if (prediction.id !== "undefined") {
 
  )
 }
-}
+
 
 export default Prediction
