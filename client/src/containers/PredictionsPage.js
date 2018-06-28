@@ -6,6 +6,7 @@ import PredictionsNew from '../components/PredictionsNew'
 // import other components here
 
 const PredictionsPage = ({match}) =>
+
   <div>
   {/*<Route exact path={`/:predictionId`} component={PredictionShow} />*/}
   <PredictionsNew />

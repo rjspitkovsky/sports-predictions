@@ -43,7 +43,6 @@ class PredictionsNew extends React.Component {
       <input type="text" onChange={(event) => this.handleSportChange(event)} placeholder="What sport?" /><br />
       <input type="submit" value="Add Prediction" />
       </form>
-      <h2>{this.state.prediction}</h2>
       </div>
     )
   }

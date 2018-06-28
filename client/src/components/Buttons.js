@@ -12,28 +12,31 @@ class Buttons extends React.Component {
     super();
 
     this.state = {
-      status: ''
+      counter: 0
     }
   }
+
+
+  delayFetchPredictions = (props) => setTimeout(function() {props.fetchPredictions()}, 100)
 
   handleDelete = event => {
     event.preventDefault()
     this.props.deletePrediction(this.props.prediction.id)
-    this.props.fetchPredictions()
+    this.delayFetchPredictions(this.props)
 }
 
   handleCorrect = event => {
     event.preventDefault()
     this.props.prediction.status = "correct"
     this.props.updateCorrectPrediction(this.props.prediction)
-    this.props.fetchPredictions()
+    this.delayFetchPredictions(this.props)
   }
 
   handleWrong = event => {
     event.preventDefault()
     this.props.prediction.status = "wrong"
     this.props.updateWrongPrediction(this.props.prediction)
-    this.props.fetchPredictions()
+    this.delayFetchPredictions(this.props)
   }
 
 
