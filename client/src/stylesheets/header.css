@@ -1,0 +1,15 @@
+.header {
+  color: red;
+  padding-bottom: 20px;
+  padding-top: 0px;
+  border-bottom: 2px solid red;
+}
+
+.headerh1 {
+  text-decoration: underline;
+  font-size: 64px;
+}
+
+.headerh2 {
+  color: black;
+}

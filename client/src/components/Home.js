@@ -1,8 +1,12 @@
 import React from 'react';
 
+
 const Home = () => {
     return (
-      <div>
+      <div className="home">
+      <br />
+      <br />
+      <br />
       <p>Have you ever watch a completely unbelievable sporting event and tell your friends that you called it?</p>
       <p>Did they believe you?</p>
       <h1>Welcome to Sports Predictions</h1>

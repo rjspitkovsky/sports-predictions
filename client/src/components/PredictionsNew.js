@@ -39,7 +39,7 @@ class PredictionsNew extends React.Component {
       <br />
       <br />
       <form onSubmit={(event) => this.handleOnSubmit(event)}>
-      <textarea type="text" onChange={(event) => this.handleContentChange(event)} placeholder="What's your prediction?" /><br />
+      <textarea cols="80" rows="5" type="text" onChange={(event) => this.handleContentChange(event)} placeholder="What's your prediction?" /><br />
       <input type="text" onChange={(event) => this.handleSportChange(event)} placeholder="What sport?" /><br />
       <input type="submit" value="Add Prediction" />
       </form>
