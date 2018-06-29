@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addPrediction, fetchPredictions } from '../actions/predictionActions'
-// import addPrediction action and connect mapDispatchToProps here
+
 
 class PredictionsNew extends React.Component {
   constructor(){
@@ -14,14 +14,13 @@ class PredictionsNew extends React.Component {
     }
   }
 
+  delayFetchPredictions = (props) => setTimeout(function() {props.fetchPredictions()}, 100)
 
   handleOnSubmit = event => {
     event.preventDefault()
     event.target.reset()
-    const prediction = Object.assign({}, this.state)
-    this.props.addPrediction(prediction)
-    this.props.fetchPredictions()
-
+    this.props.addPrediction(this.state)
+    this.delayFetchPredictions(this.props)
   }
 
   handleContentChange = event => {

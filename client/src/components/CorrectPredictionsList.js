@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {fetchCorrectPredictions} from '../actions/predictionActions';
+import {fetchPredictions} from '../actions/predictionActions';
 import Prediction from '../components/Prediction'
 
 
 class CorrectPredictionsList extends React.Component {
   constructor(props) {
     super(props);
-    this.props.fetchCorrectPredictions()
+    const keyword = "correct"
+    this.props.fetchPredictions(keyword)
   }
 
 
@@ -31,10 +31,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    fetchCorrectPredictions: fetchCorrectPredictions
-  }, dispatch)}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CorrectPredictionsList);
+export default connect(mapStateToProps, {fetchPredictions})(CorrectPredictionsList);

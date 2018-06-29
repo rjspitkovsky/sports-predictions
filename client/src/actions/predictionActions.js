@@ -1,31 +1,14 @@
 import fetch from 'isomorphic-fetch'
 
-// RIPE FOR REFACTORING INTO ONE MEGA METHOD
+// ONE ACTION FOR GET,POST,PATCH,DELETE FETCH REQUESTS
 
-export function fetchPredictions() {
+
+export function fetchPredictions(keyword = "predictions") {
   return (dispatch) => {
     dispatch({type: 'LOADING_PREDICTIONS'});
-    return fetch('http://localhost:3000/api/predictions').then(resp => resp.json()).then(respJSON =>
+    return fetch(`http://localhost:3000/api/${keyword}`).then(resp => resp.json()).then(respJSON =>
     {const predictions = respJSON;
       predictions.forEach(prediction => (dispatch({type: 'FETCH_PREDICTIONS', payload: prediction})))})
-  }
-}
-
-export function fetchCorrectPredictions() {
-  return (dispatch) => {
-    dispatch({type: 'LOADING_PREDICTIONS'});
-    return fetch('http://localhost:3000/api/correct').then(resp => resp.json()).then(respJSON =>
-    {const correctPredictions = respJSON;
-    correctPredictions.forEach(prediction => (dispatch({type: 'FETCH_CORRECT_PREDICTIONS', payload: prediction})))})
-  }
-}
-
-export function fetchWrongPredictions() {
-  return(dispatch) => {
-    dispatch({type: 'LOADING_PREDICTIONS'});
-    return fetch('http://localhost:3000/api/wrong').then(resp => resp.json()).then(respJSON =>
-    {const wrongPredictions = respJSON;
-    wrongPredictions.forEach(prediction => (dispatch({type: 'FETCH_WRONG_PREDICTIONS', payload: prediction})))})
   }
 }
 
@@ -45,7 +28,6 @@ export function addPrediction(data) {
 
 
 export function deletePrediction(id) {
-  // console.log(id)
   return (dispatch) => {
     dispatch({type: 'LOADING_PREDICTIONS'});
     return fetch('http://localhost:3000/api/predictions/' + id, {
@@ -59,7 +41,7 @@ export function deletePrediction(id) {
   }
 }
 
-export function updateCorrectPrediction(prediction) {
+export function updatePrediction(prediction) {
   return (dispatch) => {
     dispatch({type: 'LOADING_PREDICTIONS'});
     return fetch('http://localhost:3000/api/predictions/' + prediction.id, {
@@ -71,24 +53,4 @@ export function updateCorrectPrediction(prediction) {
       body: JSON.stringify(prediction)
     }).then(resp => console.log(resp))
   }
-}
-
-export function updateWrongPrediction(prediction) {
-  return (dispatch) => {
-    dispatch({type: 'LOADING_PREDICTIONS'});
-    return fetch('http://localhost:3000/api/predictions/' + prediction.id, {
-      method: 'PATCH',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(prediction)
-    }).then(resp => console.log(resp))
-  }
-}
-
-export function addPredictionToState(prediction) {
-  return (dispatch) => {
-    dispatch({type: 'ADD_PREDICTION', payload: prediction})
-}
 }
