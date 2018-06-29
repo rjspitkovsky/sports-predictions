@@ -33,6 +33,8 @@ class PredictionsController < ApplicationController
     @prediction.destroy
   end
 
+  #ADDITIONAL API ENDPOINTS 
+
   def correct
     @predictions = Prediction.where(status: 'correct')
     render json: @predictions
