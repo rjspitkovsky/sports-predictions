@@ -8,8 +8,8 @@ import WrongButton from '../components/WrongButton'
 
 
 class Buttons extends React.Component {
-  
 
+// Allows database to finish updating before fetchPredictions is called
   delayFetchPredictions = (props) => setTimeout(function() {props.fetchPredictions()}, 100)
 
   handleDelete = event => {
@@ -17,6 +17,8 @@ class Buttons extends React.Component {
     this.props.deletePrediction(this.props.prediction.id)
     this.delayFetchPredictions(this.props)
 }
+
+// Potential area to refactor
 
   handleCorrect = event => {
     event.preventDefault()
@@ -32,6 +34,7 @@ class Buttons extends React.Component {
     this.delayFetchPredictions(this.props)
   }
 
+// Wanted to provide some conditional rendering: If a prediction is still undetermined it can't be deleted but it can be marked correct or wrong. If a prediction is wrong then it can only be deleted but cannot be changed to correct. If a prediction is correct then it just has to remain there in all its glory.
 
   render() {
     return (

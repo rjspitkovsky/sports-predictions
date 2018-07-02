@@ -7,6 +7,7 @@ import Prediction from '../components/Prediction'
 class CorrectPredictionsList extends React.Component {
   constructor(props) {
     super(props);
+    // set keyword so fetchPredictions knows where to send the API request
     const keyword = "correct"
     this.props.fetchPredictions(keyword)
   }
@@ -17,12 +18,10 @@ class CorrectPredictionsList extends React.Component {
       <div>
     {this.props.predictions.map((prediction, index) =>
       <Prediction  key={index} prediction={prediction} />
-
     )}
     </div>
   )
   }
-
 }
 
 const mapStateToProps = (state) => {

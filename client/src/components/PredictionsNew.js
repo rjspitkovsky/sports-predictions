@@ -7,17 +7,20 @@ class PredictionsNew extends React.Component {
   constructor(){
     super();
 
+
+  // this.state is the object that will be turned to a Prediction object and saved in the database. The status value is defaulted to "undetermined"
     this.state= {
       content: '',
       sport: '',
-      status: 'undetermined'
     }
   }
 
+  // Allows database to finish updating before fetchPredictions is called
   delayFetchPredictions = (props) => setTimeout(function() {props.fetchPredictions()}, 100)
 
   handleOnSubmit = event => {
     event.preventDefault()
+    // Clears the form 
     event.target.reset()
     this.props.addPrediction(this.state)
     this.delayFetchPredictions(this.props)
