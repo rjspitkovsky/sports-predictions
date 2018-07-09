@@ -5,7 +5,7 @@ import fetch from 'isomorphic-fetch'
 
 export function fetchPredictions(keyword = "predictions") {
   return (dispatch) => {
-    // Resets the state so past predictions do not render out of place or render multiple times  
+    // Resets the state so past predictions do not render out of place or render multiple times
     dispatch({type: 'LOADING_PREDICTIONS'});
     return fetch(`http://localhost:3000/api/${keyword}`).then(resp => resp.json()).then(respJSON =>
     {const predictions = respJSON;

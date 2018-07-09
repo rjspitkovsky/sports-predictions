@@ -7,11 +7,8 @@ import Prediction from '../components/Prediction';
 class PredictionsList extends React.Component {
   constructor(props) {
     super(props);
-    this.delayFetchPredictions(props)
+    props.fetchPredictions(props.keyword)
   }
-
-  delayFetchPredictions = (props) => setTimeout(function() {props.fetchPredictions()}, 100)
-
 
 
   render() {

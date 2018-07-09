@@ -20,7 +20,7 @@ class PredictionsNew extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    // Clears the form 
+    // Clears the form
     event.target.reset()
     this.props.addPrediction(this.state)
     this.delayFetchPredictions(this.props)

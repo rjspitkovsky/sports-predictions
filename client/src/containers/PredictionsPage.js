@@ -8,7 +8,7 @@ const PredictionsPage = () =>
 
   <div>
   <PredictionsNew />
-  <PredictionsList  />
+  <PredictionsList />
   </div>
 
 

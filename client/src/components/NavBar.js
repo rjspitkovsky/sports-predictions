@@ -7,7 +7,7 @@ const link = {
   margin: '0 6px 6px',
   background: 'black',
   textDecoration: 'none',
-  color: 'white',
+  color: 'white'
 }
 
 export const NavBar = props => {
