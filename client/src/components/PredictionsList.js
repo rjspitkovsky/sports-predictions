@@ -7,15 +7,19 @@ import Prediction from '../components/Prediction';
 class PredictionsList extends React.Component {
   constructor(props) {
     super(props);
-    props.fetchPredictions(props.keyword)
+    props.fetchPredictions()
   }
+
+
 
 
   render() {
     return (
       <div>
     {this.props.predictions.map((prediction, index) =>
-      <Prediction key={index} prediction={prediction} />
+      {if (prediction.status === this.props.keyword || this.props.keyword === undefined) {
+    return <Prediction key={index} prediction={prediction} />
+  } }
     )}
     </div>
   )

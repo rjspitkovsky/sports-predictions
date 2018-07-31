@@ -15,7 +15,7 @@ const PredictionShow = prediction => {
 const mapStateToProps = (state, ownProps) => {
 // Using the predictionId param from the Link URL to find the prediction with the same ID. Then pass it to the Prediction component which will render it
   const prediction = state.predictions.predictions.find(prediction => prediction.id === parseInt(ownProps.match.params.predictionId))
-  return prediction
+  return  prediction
 }
 
 

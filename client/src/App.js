@@ -18,7 +18,7 @@ class App extends Component {
       <Header />
       <NavBar />
       <Route exact path="/" component={Home} />
-      <Route path='/new' component={PredictionsNew} />
+      <Route exact path='/new' component={PredictionsNew} />
       <Route exact path='/predictions' component={PredictionsPage} />
       <Route exact path='/correct' render={(props) => <PredictionsList {...props} keyword={"correct"} />} />
       <Route exact path='/wrong' render={(props) => <PredictionsList {...props} keyword={"wrong"} />} />

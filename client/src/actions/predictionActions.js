@@ -9,13 +9,13 @@ export function fetchPredictions(keyword = "predictions") {
     dispatch({type: 'LOADING_PREDICTIONS'});
     return fetch(`http://localhost:3000/api/${keyword}`).then(resp => resp.json()).then(respJSON =>
     {const predictions = respJSON;
-      predictions.forEach(prediction => (dispatch({type: 'FETCH_PREDICTIONS', payload: prediction})))})
+      (dispatch({type: 'FETCH_PREDICTIONS', payload: predictions}))})
   }
 }
 
 export function addPrediction(data) {
   return (dispatch) => {
-    dispatch({type: 'LOADING_PREDICTIONS'});
+  //   dispatch({type: 'LOADING_PREDICTIONS'});
     return fetch('http://localhost:3000/api/predictions', {
     method: 'POST',
     headers: {
@@ -23,7 +23,7 @@ export function addPrediction(data) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
-  })
+  }).then(resp => resp.json()).then(respJSON => (dispatch({type: 'ADD_PREDICTION', payload: respJSON})))
 }
 }
 

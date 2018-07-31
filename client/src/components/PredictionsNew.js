@@ -23,7 +23,7 @@ class PredictionsNew extends React.Component {
     // Clears the form
     event.target.reset()
     this.props.addPrediction(this.state)
-    this.delayFetchPredictions(this.props)
+    // this.delayFetchPredictions(this.props)
   }
 
   handleContentChange = event => {

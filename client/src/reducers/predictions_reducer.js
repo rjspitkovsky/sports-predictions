@@ -4,6 +4,8 @@ function predictionsReducer(state = {predictions: []}, action) {
     return state = {predictions: []}
     // Each prediction is added to the state as the action function iterates through all the predictions in the database
     case 'FETCH_PREDICTIONS':
+    return {predictions: action.payload}
+    case 'ADD_PREDICTION':
     return {predictions: [...state.predictions, action.payload]}
     default:
     return state;
